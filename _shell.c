@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
 	char *args[MAX_ARGS];
 	pid_t pid;
 	int status, statusExit;
-	char *envp[] = {NULL}, *pathfinder;
+	char *envp[] = {NULL};
+	char *path_finder;
 	((void)argc), ((void)argv);
 
 	while (1)
