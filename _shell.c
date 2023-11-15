@@ -1,12 +1,10 @@
 #include "main.h"
-
 /**
   *main - Mock-up instance of a shell interpreter
   *@argc: argument count
   *@argv: argument vector
   *Return: 0
   */
-
 int main(int argc, char *argv[])
 {
 	char *sh_prompt = "s_shell $";
@@ -15,29 +13,21 @@ int main(int argc, char *argv[])
 	ssize_t userLine;
 	char *args[MAX_ARGS];
 	pid_t pid;
-	int status;
-	char *envp[] = {NULL};
-	char *path_finder;
-	int statusExit;
-
-	((void)argc);
-	((void)argv);
+	int status, statusExit;
+	char *envp[] = {NULL}, *pathfinder;
+	((void)argc), ((void)argv);
 
 	while (1)
 	{
 		printf("%s", sh_prompt);
 		userLine = getline(&lineptr, &l, stdin);
-
 		if (userLine == -1)
 		{
 			printf("Leaving shell...\n");
 			return (-1);
 		}
-
 		lineptr[strlen(lineptr) - 1] = '\0';
-
 		cmdline(lineptr, args);
-
 		if (strcmp(lineptr, "exit") == 0)
 		{
 			if (args[1] != NULL)
@@ -52,21 +42,17 @@ int main(int argc, char *argv[])
 				exit(0);
 			}
 		}
-
 		if (strcmp(args[0], "env") == 0)
 		{
 			cmdEnv();
 			continue;
 		}
-
 		path_finder = cmdPath(args[0]);
-
 		if (path_finder == NULL)
 		{
 			printf("%s: command not found\n", args[0]);
 			continue;
 		}
-
 		pid = fork();
 		if (pid == -1)
 		{
