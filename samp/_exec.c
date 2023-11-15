@@ -4,34 +4,29 @@
   *_exec - Handle commandline arguments
   *and execute commands
   *@cmmand: command input
-  *@args: argument input
+  *@argv: argument input
   *Return: 0.
   */
 
-void _exec(char *cmmand, char *args[])
+void _exec(char *cmmand, char *argv[])
 {
-	pid_t pid, wpid;
-	int status;
+	pid_t pid = fork();
 
-	pid = fork();
-	if (pid == 0)
+	if (pid == -1)
 	{
-		if (execve(cmmand, args, NULL) == -1)
+		perror(argv[0]);
+		exit(EXIT_FAILURE);
+	}
+	else if (pid == 0)
+	{
+		if (execve(cmmand, argv, NULL) == -1)
 		{
-			perror("execve");
+			perror(argv[0]);
 			exit(EXIT_FAILURE);
 		}
-		else if (pid < 0)
-		{
-			perror("fork");
-		}
-		else
-		{
-			do {
-				wpid = waitpid(pid, &status, WUNTRACED);
-			}
-			while (!WIFEXITED(status) && !WIFSIGNALED(status))
-			{}
-		}
+	}
+	else
+	{
+		waitpid(pid, NULL, 0);
 	}
 }
