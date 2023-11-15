@@ -1,7 +1,5 @@
 #include "main.h"
 
-extern char **environ;
-
 /**
   *cmdEnv - handling the env builtin
   */

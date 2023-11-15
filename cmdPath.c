@@ -19,16 +19,16 @@ char *cmdPath(char *cmmand)
 	{
 		if (stat(cmmand, &path_st) == 0)
 		{
-			return strdup(cmmand);
+			return (strdup(cmmand));
 		}
-		return NULL;
+		return (NULL);
 	}
 
 	dir_path = getenv("PATH");
 	if (dir_path == NULL)
 	{
 		printf("I'm null oo");
-		return NULL;
+		return (NULL);
 	}
 	cpy_dirPath = strdup(dir_path);
 	dir_token = strtok(cpy_dirPath, ":");
@@ -51,5 +51,5 @@ char *cmdPath(char *cmmand)
 	}
 
 	free(cpy_dirPath);
-	return NULL;
+	return (NULL);
 }

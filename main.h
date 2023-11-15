@@ -10,6 +10,8 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+extern char **environ;
+
 int access(const char *pathname, int mode);
 int chdir(const char *path);
 int execve(const char *pathname, char *const argv[], char *const envp[]);

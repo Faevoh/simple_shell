@@ -1,7 +1,5 @@
 #include "main.h"
 
-extern char **environ;
-
 /**
   *main - Mock-up instance of a shell interpreter
   *@argc: argument count
@@ -25,7 +23,7 @@ int main(int argc, char *argv[])
 	((void)argc);
 	((void)argv);
 
-	while(1)
+	while (1)
 	{
 		printf("%s", sh_prompt);
 		userLine = getline(&lineptr, &l, stdin);
@@ -70,7 +68,7 @@ int main(int argc, char *argv[])
 		}
 
 		pid = fork();
-		if(pid == -1)
+		if (pid == -1)
 		{
 			perror("fork");
 			exit(EXIT_FAILURE);
