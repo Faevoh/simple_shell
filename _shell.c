@@ -48,6 +48,11 @@ int main(int argc, char *argv[])
 			cmdEnv();
 			continue;
 		}
+		if (strcmp(args[0], "cd") == 0)
+		{
+			cmd_cd(args[0]);
+			continue;
+		}
 		path_finder = cmdPath(args[0]);
 		if (path_finder == NULL)
 		{

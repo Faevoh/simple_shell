@@ -25,5 +25,6 @@ char *getenv(const char *name);
 char *strtok(char *str, const char *delim);
 char *cmdPath(char *cmmand);
 void cmdEnv(void);
+void cmd_cd(char *path);
 
 #endif
