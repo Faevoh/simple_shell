@@ -21,6 +21,7 @@ ssize_t getline(char **lineptr, size_t *l, FILE *stream);
 pid_t getpid(void);
 pid_t wait(int *status);
 void cmdline(char *cmmand, char **args);
+char *cmdStrtok(char *str, char const *delim);
 char *getenv(const char *name);
 char *strtok(char *str, const char *delim);
 char *cmdPath(char *cmmand);
