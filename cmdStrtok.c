@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * _dstrtok - this is the strtok implementation for this project
+ * cmdStrtok - this is the strtok implementation for this project
  *
  * @str: string
  * @delim: delimiter
  * Return: token
  */
 
-char *_dstrtok(char *str, char const *delim)
+char *cmdStrtok(char *str, char const *delim)
 {
 	static char *ptr;
 	char *token;
