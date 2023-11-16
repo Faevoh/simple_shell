@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 		}
 		if (strcmp(args[0], "cd") == 0)
 		{
-			cmd_cd(args[0]);
+			cmd_cd(args[1]);
 			continue;
 		}
 		path_finder = cmdPath(args[0]);
