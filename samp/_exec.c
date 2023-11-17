@@ -14,14 +14,14 @@ void _exec(char *cmmand, char *args[])
 
 	if (pid == -1)
 	{
-		perror(args[0]);
+		perror("fork");
 		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
 		if (execve(cmmand, args, NULL) == -1)
 		{
-			perror(args[0]);
+			perror(cmmand);
 			exit(EXIT_FAILURE);
 		}
 	}

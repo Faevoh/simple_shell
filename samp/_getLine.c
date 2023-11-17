@@ -21,9 +21,11 @@ ssize_t _getLine(char **lineptr, size_t *l, FILE *stream)
 		free(line);
 		return (-1);
 	}
-
-	*lineptr = line;
-	*l = len;
+	else
+	{
+		*lineptr = line;
+		*l = len;
+	}
 
 	return (inputRead);
 }

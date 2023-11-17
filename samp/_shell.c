@@ -12,7 +12,8 @@ int main(int argc, char *argv[])
 	char *sh_prompt = "s_shell $ ";
 	char *readLine = NULL;
 	size_t lineSize;
-	((void)argc);
+	char *args[MAX_ARGS];
+	((void)argc), ((void)argv);
 
 	while (1)
 	{
@@ -23,7 +24,8 @@ int main(int argc, char *argv[])
 			break;
 		}
 		readLine[_strlen(readLine) - 1] = '\0';
-		_exec(readLine, argv);
+		cmdline(readLine, args);
+		_exec(args[0], args);
 	}
 
 	free(readLine);

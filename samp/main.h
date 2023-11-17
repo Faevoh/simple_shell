@@ -13,7 +13,6 @@
 #include <sys/types.h>
 
 extern char **environ;
-
 int access(const char *pathname, int mode);
 int chdir(const char *path);
 int execve(const char *pathname, char *const argv[], char *const envp[]);
@@ -22,12 +21,17 @@ pid_t fork(void);
 ssize_t _getLine(char **lineptr, size_t *l, FILE *stream);
 pid_t getpid(void);
 pid_t wait(int *status);
-void cmdline(char *cmmand, char **args);
 char *getenv(const char *name);
 char *strtok(char *str, const char *delim);
 char *cmdPath(char *cmmand);
 void cmdEnv(void);
 void _exec(char *cmmand, char *args[]);
 size_t _strlen(const char *s);
+void cmdline(char *cmmand, char *args[]);
+char *_strsep(char **stringp, const char *delim);
+char *_strchr(const char *s, int c);
+size_t _strcspn(const char *s1, const char *s2);
+size_t _strlen(const char *s);
+
 
 #endif
