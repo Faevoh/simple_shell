@@ -10,23 +10,34 @@
 
 void _exec(char *cmmand, char *args[])
 {
-	pid_t pid = fork();
+	char *full_Path = cmdPath(cmmand);
+	pid_t pid;
 
-	if (pid == -1)
+	if (full_Path != NULL)
 	{
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
-	else if (pid == 0)
-	{
-		if (execve(cmmand, args, NULL) == -1)
+		pid = fork();
+
+		if (pid == -1)
 		{
-			perror(cmmand);
+			perror("fork");
 			exit(EXIT_FAILURE);
 		}
+		else if (pid == 0)
+		{
+			if (execve(full_Path, args, NULL) == -1)
+			{
+				perror(full_Path);
+				exit(EXIT_FAILURE);
+			}
+		}
+		else
+		{
+			waitpid(pid, NULL, 0);
+		}
+		free(full_Path);
 	}
 	else
 	{
-		waitpid(pid, NULL, 0);
+		printf("%s: No such file or directory\n", cmmand);
 	}
 }
