@@ -22,16 +22,27 @@ char *cmdPath(char *cmmand)
 		}
 		return (NULL);
 	}
-	dir_path = _getenv("PATH");
+	dir_path = _getenv("PATH", environ);
 	if (dir_path == NULL)
 	{
 		return (NULL);
 	}
 	cpy_dirPath = _strdup(dir_path);
-	dir_token = strtok(cpy_dirPath, ":");
+	if (cpy_dirPath == NULL)
+	{
+		return (NULL);
+	}
+	dir_token = _strsep(&cpy_dirPath, ":");
 	while (dir_token != NULL)
 	{
 		full_dirPath = malloc(_strlen(dir_token) + _strlen(cmmand) + 2);
+		if (full_dirPath == NULL)
+		{
+			free(cpy_dirPath);
+			return (NULL);
+		}
+		printf("dir_path before _getenv: %s\n", dir_path);
+		printf("full_dirPath: %s\n", full_dirPath);
 		_strcpy(full_dirPath, dir_token);
 		_strcat(full_dirPath, "/");
 		_strcat(full_dirPath, cmmand);
@@ -42,7 +53,7 @@ char *cmdPath(char *cmmand)
 		}
 
 		free(full_dirPath);
-		dir_token = strtok(NULL, ":");
+		dir_token = _strsep(&cpy_dirPath, ":");
 	}
 	free(cpy_dirPath);
 	return (NULL);

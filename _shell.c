@@ -6,7 +6,7 @@
   *Return: 0
   */
 int main(int argc, char *argv[])
-{
+
 	char *sh_prompt = "s_shell $";
 	char *lineptr = NULL;
 	size_t l = 0;

@@ -21,7 +21,7 @@ pid_t fork(void);
 ssize_t _getLine(char **lineptr, size_t *l, FILE *stream);
 pid_t getpid(void);
 pid_t wait(int *status);
-char *_getenv(const char *name);
+char *_getenv(const char *name, char **envp);
 char *strtok(char *str, const char *delim);
 char *cmdPath(char *cmmand);
 void cmdEnv(void);

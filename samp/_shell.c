@@ -4,16 +4,21 @@
   *main - Mock-up instance of a shell interpreter
   *@argc: argument count
   *@argv: argument vector
+  *@envp: environ variable
   *Return: 0
   */
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[], char *envp[])
 {
 	char *sh_prompt = "s_shell $ ";
 	char *readLine = NULL;
 	size_t lineSize;
 	char *args[MAX_ARGS];
+	char *dir_path;
 	((void)argc), ((void)argv);
+
+	dir_path = _getenv("PATH", envp);
+	printf("PATH: %s\n", dir_path);
 
 	while (1)
 	{
