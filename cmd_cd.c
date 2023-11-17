@@ -21,7 +21,7 @@ void cmd_cd(char *path)
 		setenv("OLDPWD", pwd, 1);
 		setenv("PWD", home, 1);
 	}
-	else if (strcmp(path, "-") == 0)
+	else if (_strcmp(path, "-") == 0)
 	{
 		if (oldpwd)
 		{

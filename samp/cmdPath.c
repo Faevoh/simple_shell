@@ -16,9 +16,9 @@ char *cmdPath(char *cmmand)
 
 	if (cmmand[0] == '/')
 	{
-		if (stat(cmmand, &path_st) == 0)
+		if (access(cmmand, X_OK) == 0)
 		{
-			return (_strdup(cmmand));
+			return (cmmand);
 		}
 		return (NULL);
 	}
@@ -41,8 +41,6 @@ char *cmdPath(char *cmmand)
 			free(cpy_dirPath);
 			return (NULL);
 		}
-		printf("dir_path before _getenv: %s\n", dir_path);
-		printf("full_dirPath: %s\n", full_dirPath);
 		_strcpy(full_dirPath, dir_token);
 		_strcat(full_dirPath, "/");
 		_strcat(full_dirPath, cmmand);

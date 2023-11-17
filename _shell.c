@@ -6,7 +6,7 @@
   *Return: 0
   */
 int main(int argc, char *argv[])
-
+{
 	char *sh_prompt = "s_shell $";
 	char *lineptr = NULL;
 	size_t l = 0;
@@ -14,22 +14,21 @@ int main(int argc, char *argv[])
 	char *args[MAX_ARGS];
 	pid_t pid;
 	int status, statusExit;
-	char *envp[] = {NULL};
 	char *path_finder;
 	((void)argc), ((void)argv);
 
 	while (1)
 	{
 		printf("%s", sh_prompt);
-		userLine = getline(&lineptr, &l, stdin);
+		userLine = _getLine(&lineptr, &l, stdin);
 		if (userLine == -1)
 		{
 			printf("Leaving shell...\n");
 			return (-1);
 		}
-		lineptr[strlen(lineptr) - 1] = '\0';
+		lineptr[_strlen(lineptr) - 1] = '\0';
 		cmdline(lineptr, args);
-		if (strcmp(lineptr, "exit") == 0)
+		if (_strcmp(lineptr, "exit") == 0)
 		{
 			if (args[1] != NULL)
 			{
@@ -43,12 +42,12 @@ int main(int argc, char *argv[])
 				exit(0);
 			}
 		}
-		if (strcmp(args[0], "env") == 0)
+		if (_strcmp(args[0], "env") == 0)
 		{
 			cmdEnv();
 			continue;
 		}
-		if (strcmp(args[0], "cd") == 0)
+		if (_strcmp(args[0], "cd") == 0)
 		{
 			cmd_cd(args[1]);
 			continue;
@@ -67,7 +66,7 @@ int main(int argc, char *argv[])
 		}
 		else if (pid == 0)
 		{
-			if (execve(path_finder, args, envp) == -1)
+			if (execve(path_finder, args, environ) == -1)
 			{
 				perror("execve");
 				exit(EXIT_FAILURE);

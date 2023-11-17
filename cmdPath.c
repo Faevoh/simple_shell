@@ -18,24 +18,23 @@ char *cmdPath(char *cmmand)
 	{
 		if (stat(cmmand, &path_st) == 0)
 		{
-			return (strdup(cmmand));
+			return (_strdup(cmmand));
 		}
 		return (NULL);
 	}
 	dir_path = getenv("PATH");
 	if (dir_path == NULL)
 	{
-		printf("I'm null oo");
 		return (NULL);
 	}
-	cpy_dirPath = strdup(dir_path);
+	cpy_dirPath = _strdup(dir_path);
 	dir_token = strtok(cpy_dirPath, ":");
 	while (dir_token != NULL)
 	{
-		full_dirPath = malloc(strlen(dir_token) + strlen(cmmand) + 2);
-		strcpy(full_dirPath, dir_token);
-		strcat(full_dirPath, "/");
-		strcat(full_dirPath, cmmand);
+		full_dirPath = malloc(_strlen(dir_token) + _strlen(cmmand) + 2);
+		_strcpy(full_dirPath, dir_token);
+		_strcat(full_dirPath, "/");
+		_strcat(full_dirPath, cmmand);
 		if (stat(full_dirPath, &path_st) == 0)
 		{
 			free(cpy_dirPath);

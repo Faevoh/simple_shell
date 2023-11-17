@@ -11,6 +11,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <fcntl.h>
 
 extern char **environ;
 int access(const char *pathname, int mode);

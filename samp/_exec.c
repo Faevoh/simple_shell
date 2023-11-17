@@ -10,7 +10,7 @@
 
 void _exec(char *cmmand, char *args[])
 {
-	char *full_Path = cmdPath(cmmand);
+	char *full_Path = cmdPath(args[0]);
 	pid_t pid;
 
 	if (full_Path != NULL)
