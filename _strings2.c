@@ -1,18 +1,62 @@
 #include "main.h"
 
 /**
-  *_strcpy - copies the string pointed to
-  *@dst: destination string where string is copied
-  *@src: source string which string are copied
-  *Return: returns destination string
-  */
-char *_strcpy(char *dst, const char *src)
+ * _memcpy - copies memory from the source to destination
+ * @dest: destination
+ * @src: source
+ * @n: size of memory to be copied
+ *
+ * Return: memory of destination
+ */
+void *_memcpy(void *dest, void *src, size_t n)
 {
-	char *destination = dst;
+	char *destPtr = (char *)dest;
+	const char *srcPtr = (const char *)src;
 
-	while ((*dst++ = *src++) != '\0')
-	{};
-	return (destination);
+	for (size_t i = 0; i < n; ++i)
+	{
+		destPtr[i] = srcPtr[i];
+	}
+	return (dest);
+}
+
+/**
+ * _realloc - reallocate function
+ * @ptr: olld malloc pointer
+ * @size: new size
+ *
+ * Return: new ptr
+ */
+void *_realloc(void *ptr, size_t size)
+{
+	void *new_ptr;
+
+	if (!ptr)
+	{
+		new_ptr = malloc(size);
+
+		if (!new_ptr)
+		{
+			return (NULL);
+		}
+		else if (!size)
+		{
+			free(ptr);
+			return (NULL);
+		}
+		else
+		{
+			new_ptr = malloc(size);
+
+			if (!new_ptr)
+			{
+				return (NULL);
+			}
+		}
+		_memcpy(new_ptr, ptr, size);
+		free(ptr);
+	}
+	return (new_ptr);
 }
 
 /**
@@ -75,21 +119,4 @@ char *_strcat(char *dst, const char *src)
 	while ((*dst++ = *src++) != '\0')
 	{};
 	return (destination);
-}
-
-/**
-  *_strcmp - compare two strings
-  *@s1: first string to be compared
-  *@s2: second string to be compared
-  *Return: 0
-  */
-int _strcmp(const char *s1, const char *s2)
-{
-	while (*s1 != '\0' && *s2 != '\0' && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-
-	return (*s1 - *s2);
 }

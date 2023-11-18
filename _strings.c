@@ -92,3 +92,20 @@ char *_strsep(char **stringp, const char *delim)
 	}
 	return (strt);
 }
+
+/**
+  *_strcmp - compare two strings
+  *@s1: first string to be compared
+  *@s2: second string to be compared
+  *Return: 0
+  */
+int _strcmp(const char *s1, const char *s2)
+{
+	while (*s1 != '\0' && *s2 != '\0' && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
+}
+
