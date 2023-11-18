@@ -1,9 +1,15 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+/* Macros */
 #define MAX_ARGS 100
 #define MAX_LINE_SIZE 1024
+#define UNUSED __attribute__((unused))
 
+extern int ex_code;
+extern char **environ UNUSED;
+
+/* Headers */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -12,7 +18,11 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
+#include <errno.h>
+#include <stddef.h>
+#include <signal.h>
 
+/* Prototypes */
 extern char **environ;
 int access(const char *pathname, int mode);
 int chdir(const char *path);
@@ -23,6 +33,7 @@ ssize_t _getLine(char **lineptr, size_t *l, FILE *stream);
 pid_t getpid(void);
 pid_t wait(int *status);
 char *_getenv(const char *name);
+void _exec(char *cmmand, char *args[]);
 char *strtok(char *str, const char *delim);
 char *cmdPath(char *cmmand);
 void cmdEnv(void);
@@ -45,4 +56,6 @@ void remove_trailing_and_leading_spaces(char *str);
 void tokenize(char *command, char *argv[MAX_ARGS]);
 int num_args(char *argv[]);
 int _atoi(const char *str);
+int _1exit(char *status __attribute__((unused)), int c, char *a, char **ag);
+void _perror(char *err, int count, char *c);
 #endif
