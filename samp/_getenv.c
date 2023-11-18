@@ -3,6 +3,8 @@
 /**
   *_getenv - searches the environment list
   *@name: environment to retrieve
+  *@envp: pointer to array of environment variable string
+  *
   *Return: returns a pointer to the value part of the environment variable
   */
 char *_getenv(const char *name, char **envp)

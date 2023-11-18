@@ -15,7 +15,7 @@ void *_memcpy(void *dest, void *src, size_t n)
 
 	if (dest == src)
 	{
-		return dest;
+		return (dest);
 	}
 
 	while (n--)

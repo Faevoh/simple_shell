@@ -4,7 +4,7 @@
   *main - Mock-up instance of a shell interpreter
   *@argc: argument count
   *@argv: argument vector
-  *@envp: environ variable
+  *
   *Return: 0
   */
 
