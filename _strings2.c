@@ -10,12 +10,17 @@
  */
 void *_memcpy(void *dest, void *src, size_t n)
 {
-	char *destPtr = (char *)dest;
-	const char *srcPtr = (const char *)src;
+	char *cdest = (char *)dest;
+	const char *csrc = (const char *)src;
 
-	for (size_t i = 0; i < n; ++i)
+	if (dest == src)
 	{
-		destPtr[i] = srcPtr[i];
+		return dest;
+	}
+
+	while (n--)
+	{
+		*cdest++ = *csrc++;
 	}
 	return (dest);
 }
