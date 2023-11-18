@@ -88,3 +88,33 @@ int num_args(char *argv[])
 
 	return (i);
 }
+
+/**
+ * _atoi - convert a string to an integer
+ *
+ * @str: string to convert
+ * Return: integer value of str
+ */
+int _atoi(const char *str)
+{
+	int n = 0;
+	int sign = 1;
+
+	while (*str)
+	{
+		if (*str == '-')
+		{
+			sign = -1;
+		}
+		else if (*str >= '0' && *str <= '9')
+		{
+			n = n * 10 + (*str - '0');
+		}
+		else
+		{
+			break;
+		}
+		str++;
+	}
+	return (n * sign);
+}

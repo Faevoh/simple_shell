@@ -43,4 +43,6 @@ void *_realloc(void *ptr, size_t size);
 void *_memcpy(void *dest, void *src, size_t n);
 void remove_trailing_and_leading_spaces(char *str);
 void tokenize(char *command, char *argv[MAX_ARGS]);
+int num_args(char *argv[]);
+int _atoi(const char *str);
 #endif
