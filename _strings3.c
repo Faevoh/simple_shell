@@ -44,6 +44,7 @@ void remove_trailing_and_leading_spaces(char *str)
 	if (start > 0)
 	{
 		size_t i = start;
+
 		while (str[i] != '\0')
 		{
 			str[i - start] = str[i];
@@ -59,7 +60,6 @@ void remove_trailing_and_leading_spaces(char *str)
  * @command: string to tokenize
  * @argv: array to store tokens
  */
-
 void tokenize(char *command, char *argv[MAX_ARGS])
 {
 	int i = 0;
@@ -73,3 +73,18 @@ void tokenize(char *command, char *argv[MAX_ARGS])
 	argv[i] = NULL;
 }
 
+/**
+ * num_args - count the number of arguments in an array of arguments
+ *
+ * @argv: array of arguments
+ * Return:  number of arguments in argv
+ */
+int num_args(char *argv[])
+{
+	int i = 0;
+
+	while (argv[i] != NULL)
+		i++;
+
+	return (i);
+}
