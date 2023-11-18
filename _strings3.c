@@ -53,3 +53,23 @@ void remove_trailing_and_leading_spaces(char *str)
 	}
 }
 
+/**
+ * tokenize - tokenize a string into ann array of tokens
+ *
+ * @command: string to tokenize
+ * @argv: array to store tokens
+ */
+
+void tokenize(char *command, char *argv[MAX_ARGS])
+{
+	int i = 0;
+	char *token = strtok(command, " ");
+
+	while (token != NULL)
+	{
+		argv[i++] = token;
+		token = strtok(NULL, " ");
+	}
+	argv[i] = NULL;
+}
+

@@ -41,4 +41,6 @@ void cmd_cd(char *path);
 int _strcmp(const char *s1, const char *s2);
 void *_realloc(void *ptr, size_t size);
 void *_memcpy(void *dest, void *src, size_t n);
+void remove_trailing_and_leading_spaces(char *str);
+void tokenize(char *command, char *argv[MAX_ARGS]);
 #endif
