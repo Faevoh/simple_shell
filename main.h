@@ -63,5 +63,6 @@ int process_command(char **argv);
 void _perrore(char *err, int count, char *c, char *arg);
 char *which(char *command);
 void print_all_aliases(alias_t *aliases);
+void handle_segmfault(int signo __attribute__((unused)));
 
 #endif
