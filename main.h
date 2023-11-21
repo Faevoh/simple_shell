@@ -65,4 +65,7 @@ char *which(char *command);
 void print_all_aliases(alias_t *aliases);
 void handle_segmfault(int signo __attribute__((unused)));
 
+void add_env_var(struct Node **head, const char *name, const char *value);
+void updt_env(struct Node *head);
+
 #endif

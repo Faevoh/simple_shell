@@ -52,3 +52,23 @@ int _1exit(char *status __attribute__((unused)), int c, char *a, char **ag)
 
 	return (i);
 }
+
+/**
+ * add_env_var - Add a new environment varuable to the linked list
+ *
+ * @head: pointer to head of linked list
+ * @name: name of environment variable
+ * @value: value if environment variable
+ */
+void add_env_var(struct Node **head, const char *name, const char *value)
+{
+}
+
+/**
+ * updt_env - update the eviron variable wiht yhe llinked lists content
+ *
+ * @head: head of the linked list
+ */
+void updt_env(struct Node *head)
+{
+}
