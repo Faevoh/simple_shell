@@ -50,6 +50,7 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcat(char *dst, const char *src);
 void cmd_cd(char *path);
 int _strcmp(const char *s1, const char *s2);
+int _strncpy(char *dest, char *src, int size);
 void *_realloc(void *ptr, size_t size);
 void *_memcpy(void *dest, void *src, size_t n);
 void remove_trailing_and_leading_spaces(char *str);
@@ -58,4 +59,9 @@ int num_args(char *argv[]);
 int _atoi(const char *str);
 int _1exit(char *status __attribute__((unused)), int c, char *a, char **ag);
 void _perror(char *err, int count, char *c);
+int process_command(char **argv);
+void _perrore(char *err, int count, char *c, char *arg);
+char *which(char *command);
+void print_all_aliases(alias_t *aliases);
+
 #endif
