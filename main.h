@@ -65,6 +65,54 @@ char *which(char *command);
 void print_all_aliases(alias_t *aliases);
 void handle_segmfault(int signo __attribute__((unused)));
 
+/**
+ * struct Node - a singly linked list
+ * @str: malloc'ed string
+ * @next: points to the next node
+ */
+struct Node
+{
+	char *str;
+	struct Node *next;
+};
+
+static struct Node *new_node(char *str) UNUSED;
+/**
+ * new_node - func that creates a new node for a singly linked list
+ * @str: string value to be stored in new node
+ * Return: pointer to the new node
+ */
+static struct Node *new_node(char *str)
+{
+	struct Node *node = malloc(sizeof(struct Node));
+
+	if (node == NULL)
+		return (NULL);
+	node->str = str;
+	node->next = NULL;
+	return (node);
+}
+
+static void add_node(struct Node **head, struct Node *node) UNUSED;
+/**
+ * add_node - add node to the end of a singly linked list
+ * @head: pointer to the head of the s..linked list
+ * @node: node to be added to the s..linked list
+ */
+static void add_node(struct Node **head, struct Node *node)
+{
+	if (*head == NULL)
+		*head = node;
+	else
+	{
+		struct Node *current = *head;
+
+		while (current->next != NULL)
+			current = current->next;
+		current->next = node;
+	}
+}
+
 void add_env_var(struct Node **head, const char *name, const char *value);
 void updt_env(struct Node *head);
 
