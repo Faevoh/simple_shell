@@ -101,7 +101,7 @@ void updt_env(struct Node *head)
 	size_t i = 0;
 	struct Node *current = head;
 
-	while (cureent != NULL)
+	while (current != NULL)
 	{
 		count++;
 		current = current->next;

@@ -27,7 +27,7 @@ char *which(char *command)
 
 		_strcpy(fullPath, dir);
 		_strcat(fullPath, "/");
-		_strcat(fullPAth, command);
+		_strcat(fullPath, command);
 
 		if (access(fullPath, X_OK) == 0)
 		{

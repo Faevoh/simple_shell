@@ -115,5 +115,10 @@ static void add_node(struct Node **head, struct Node *node)
 
 void add_env_var(struct Node **head, const char *name, const char *value);
 void updt_env(struct Node *head);
+void print_list(struct Node *head);
+void free_list(struct Node *head);
+int _env(void);
+int _setenv(const char *name, const char *value);
+int _unsetenv(const char *name);
 
 #endif
