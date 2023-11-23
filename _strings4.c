@@ -62,6 +62,32 @@ int _1exit(char *status __attribute__((unused)), int c, char *a, char **ag)
  */
 void add_env_var(struct Node **head, const char *name, const char *value)
 {
+	size_t nameLen = _strlen(name);
+	size_t valueLen = _strLen(value);
+	char *newEnvVar = malloc(nameLen + valueLen + 2);
+	struct Node *current = *head;
+
+	if (!newEnvVar)
+	{
+		return;
+	}
+
+	_memcpy(newEnvVar, (void *)name, nameLen);
+	newEnvVar[nameLen] = '=';
+	_memcpy(newEnvVar + nameLen = 1, (void *)value, valueLen);
+	newEnvVar[nameLen + valueLen + 1] = '\0';
+
+	while (current)
+	{
+		if (_strncmp(current->str, name, nameLen) == 0 && current->str[nameLen] == '=')
+		{
+			free(current->str);
+			current->str = newEnvVar;
+			return;
+		}
+		current = current->next;
+	}
+	add_node(head, new_node(newEnvVar));
 }
 
 /**
@@ -71,4 +97,29 @@ void add_env_var(struct Node **head, const char *name, const char *value)
  */
 void updt_env(struct Node *head)
 {
+	size_t count = 0;
+	size_t i = 0;
+	struct Node *current = head;
+
+	while (cureent != NULL)
+	{
+		count++;
+		current = current->next;
+	}
+
+	char **newEnviron = malloc((count + 1) * sizeof(char *));
+
+	if (!newEnviron)
+	{
+		return;
+	}
+
+	current = head;
+	while (current != NULL)
+	{
+		newEnviron[i++] = current->str;
+		current = current->next;
+	}
+	newEnviron[i] = NULL;
+	environ = newEnviron;
 }

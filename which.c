@@ -29,7 +29,7 @@ char *which(char *command)
 		_strcat(fullPath, "/");
 		_strcat(fullPAth, command);
 
-		if (access(fullPathm X_OK) == 0)
+		if (access(fullPath, X_OK) == 0)
 		{
 			free(pathCopy);
 			return (_strdup(fullPath));
