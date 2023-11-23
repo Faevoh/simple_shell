@@ -9,7 +9,7 @@
 
 char *which(char *command)
 {
-	char *path = _gentenv("PATH");
+	char *path = _getenv("PATH");
 	char *pathCopy;
 	char *dir;
 
@@ -18,7 +18,7 @@ char *which(char *command)
 		return (NULL);
 	}
 
-	pathCopy _strdup(path);
+	pathCopy = _strdup(path);
 	dir = strtok(pathCopy, ":");
 
 	while (dir)

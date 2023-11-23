@@ -63,7 +63,7 @@ int _1exit(char *status __attribute__((unused)), int c, char *a, char **ag)
 void add_env_var(struct Node **head, const char *name, const char *value)
 {
 	size_t nameLen = _strlen(name);
-	size_t valueLen = _strLen(value);
+	size_t valueLen = _strlen(value);
 	char *newEnvVar = malloc(nameLen + valueLen + 2);
 	struct Node *current = *head;
 
@@ -74,7 +74,7 @@ void add_env_var(struct Node **head, const char *name, const char *value)
 
 	_memcpy(newEnvVar, (void *)name, nameLen);
 	newEnvVar[nameLen] = '=';
-	_memcpy(newEnvVar + nameLen = 1, (void *)value, valueLen);
+	_memcpy(newEnvVar + nameLen + 1, (void *)value, valueLen);
 	newEnvVar[nameLen + valueLen + 1] = '\0';
 
 	while (current)
@@ -100,14 +100,13 @@ void updt_env(struct Node *head)
 	size_t count = 0;
 	size_t i = 0;
 	struct Node *current = head;
+	char **newEnviron = malloc((count + 1) * sizeof(char *));
 
 	while (current != NULL)
 	{
 		count++;
 		current = current->next;
 	}
-
-	char **newEnviron = malloc((count + 1) * sizeof(char *));
 
 	if (!newEnviron)
 	{

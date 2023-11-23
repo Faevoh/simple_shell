@@ -40,7 +40,7 @@ void free_list(struct Node *head)
 int _env(void)
 {
 	struct Node *head = NULL;
-	char **env = eenviron;
+	char **env = environ;
 
 	while (*env != NULL)
 	{
@@ -60,6 +60,8 @@ int _env(void)
  *
  * Return: always 0
  */
+void update_environ(struct Node *head);
+
 int _setenv(const char *name, const char *value)
 {
 	char **env = environ;
@@ -70,10 +72,12 @@ int _setenv(const char *name, const char *value)
 		add_node(&head, new_node(*env));
 		env++;
 	}
-	add_env_var(&head, name, value);
-	update_environ(head);
-	free_list(head);
 
+	add_env_var(&head, name, value);
+
+	update_environ(head);
+
+	free_list(head);
 	return (0);
 }
 
@@ -86,6 +90,7 @@ int _setenv(const char *name, const char *value)
 int _unsetenv(const char *name)
 {
 	char **current = environ;
+	char *temp = *current++;
 	size_t len = _strlen(name);
 
 	while (*current != NULL)
@@ -94,7 +99,8 @@ int _unsetenv(const char *name)
 		{
 			while (*current != NULL)
 			{
-				*(current++) = *current++;
+				*(current++) = temp;
+				temp = *current++;
 			}
 			return (0);
 		}

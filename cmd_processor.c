@@ -12,7 +12,7 @@ int process_command(char **argv)
 
 	if (_strcmp(argv[0], "cd") == 0)
 	{
-		if (numArg == 1)
+		if (numArg >= 1)
 		{
 			cd(argv[1]);
 			return (0);
@@ -27,7 +27,7 @@ int process_command(char **argv)
 	{
 		if (numArg == 3)
 		{
-			_setenv(argv[1]. argv[2]);
+			_setenv(argv[1], argv[2]);
 			return (0);
 		}
 	}
@@ -39,7 +39,7 @@ int process_command(char **argv)
 			return (0);
 		}
 	}
-	return (0);
+	return (1);
 }
 
 /**
