@@ -137,5 +137,10 @@ void init_aliases(alias_t **aliases);
 int alias_command(char *argv[MAX_ARGS], int num_arg __attribute__((unused)));
 void set_alias(alias_t **aliases, char *name, char *value);
 void print_alias(alias_t *alias);
+void _exec(char **_argum, char *av, int count);
+void _execve(char *c, char **p, char **r);
+void _perrror(char *err, int count, char *c);
+void _print(char *s);
+void _pnumber(int n);
 
 #endif
