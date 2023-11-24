@@ -37,7 +37,6 @@ void _exec(char *cmmand, char *args[]);
 char *strtok(char *str, const char *delim);
 char *cmdPath(char *cmmand);
 void cmdEnv(void);
-void _exec(char *cmmand, char *args[]);
 size_t _strlen(const char *s);
 void cmdline(char *cmmand, char *args[]);
 char *_strsep(char **stringp, const char *delim);
@@ -142,5 +141,6 @@ void _execve(char *c, char **p, char **r);
 void _perrror(char *err, int count, char *c);
 void _print(char *s);
 void _pnumber(int n);
+int access_check(char **arg, char *cmd, char *err, int c, char **e);
 
 #endif
