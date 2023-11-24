@@ -58,11 +58,8 @@ void tokenize(char *command, char *argv[MAX_ARGS]);
 int num_args(char *argv[]);
 int _atoi(const char *str);
 int _1exit(char *status __attribute__((unused)), int c, char *a, char **ag);
-void _perror(char *err, int count, char *c);
 int process_command(char **argv);
-void _perrore(char *err, int count, char *c, char *arg);
 char *which(char *command);
-void print_all_aliases(alias_t *aliases);
 void handle_segmfault(int signo __attribute__((unused)));
 
 /**
@@ -120,5 +117,25 @@ void free_list(struct Node *head);
 int _env(void);
 int _setenv(const char *name, const char *value);
 int _unsetenv(const char *name);
+
+/**
+ * struct alias_s - structure rep an alias
+ * @name: name of the alias
+ * @value: vallue of the alias
+ * @next: pointer to the next alais in the s..linked list
+ */
+typedef struct alias_s
+{
+	char *name;
+	char *value;
+	struct alias_s *next;
+} alias_t;
+void _perror(char *err, int count, char *c);
+void _perrore(char *err, int count, char *c, char *arg);
+void print_all_aliases(alias_t *aliases);
+void init_aliases(alias_t **aliases);
+int alias_command(char *argv[MAX_ARGS], int num_arg __attribute__((unused)));
+void set_alias(alias_t **aliases, char *name, char *value);
+void print_alias(alias_t *alias);
 
 #endif

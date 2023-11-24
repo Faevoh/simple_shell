@@ -14,7 +14,7 @@ int process_command(char **argv)
 	{
 		if (numArg >= 1)
 		{
-			cd(argv[1]);
+			cmd_cd(argv[1]);
 			return (0);
 		}
 	}
