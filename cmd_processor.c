@@ -23,7 +23,7 @@ int process_command(char **argv)
 		_env();
 		return (0);
 	}
-	else if (_strcmp(argv[0], "setenv" == 0))
+	else if (_strcmp((const char *)argv[0], "setenv") == 0)
 	{
 		if (numArg == 3)
 		{
@@ -49,6 +49,8 @@ int process_command(char **argv)
  * @c: name of command
  * @arg: argument of command
  */
+void _print(const char *str);
+void _pnumber(int num);
 
 void _perrore(char *err, int count, char *c, char *arg)
 {
